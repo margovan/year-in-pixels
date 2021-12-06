@@ -36,9 +36,6 @@ block content
               |  
               u amazing
               | .
-        div#chart
-          div.ct-chart
-        div#quoteOfTheDay
           p Loading...
         div#footer
           ul.menu
@@ -50,15 +47,6 @@ block content
               a(href="#" data-menu="demo") Demo data
             li
               a(href="#" data-menu="clear") Clear data
-            li
-              a(href="#" data-menu="about") About
-          ul.social
-            li
-              a.twitter-share-button(href='https://twitter.com/intent/tweet?text=Start+tracking+your+year+and+how+you+feel+in+pixels', data-size='large')
-                | Tweet
-            li
-              iframe(src='https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fyear-in-pixels.glitch.me%2F&layout=button_count&size=large&mobile_iframe=true&appId=132593400164506&width=84&height=28', width='95', height='28', style='border:none;overflow:hidden', scrolling='no', frameborder='0', allowtransparency='true')
-
   #menu
     #importDialog.dialog
       a.close(href="#") X
@@ -71,26 +59,6 @@ block content
       h3 Export a mood calendar
       p Copy the following text and use the import tool to import it.
       textarea(id="exportMoodText", onclick="this.focus();this.select()", readonly="readonly")
-    #aboutDialog.dialog
-      a.close(href="#") X
-      h3 Hello there and thank you
-      p First of all, thank you for your interest in this little tool.
-      p This tool was made to keep track of your mood during the entire year, using pixels. You can load this page every day and select how you're feeling. The tool will keep track of your mood and give you a visual for how you've felt during the year.
-      p If you use different browsers or computers, you can import/export your calendar too.
-      p Credits to Camille (@passioncarnets), the original creator of this format.
-      h3 About the author
-      p
-        | My name is Alejandro AR 
-        | (
-        a(href="http://kinduff.com") @kinduff
-        | )
-        | and I enjoy making little tools that help people out.
-      h3 Thanks to the contributors!
-      p
-        | Thank you 
-        a(href="http://schep.me") @schep_
-        | for adding PWA support!
-      p Thanks for passing by.
-
+      
   script(type='text/javascript').
     var moodOptions = !{JSON.stringify(moodOptions)}
