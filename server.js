@@ -17,12 +17,12 @@ for (var i = 0; i < months.length; i++) {
 }
 
 var moodOptions = {
-  5: 'amazing',
-  4: 'great',
-  3: 'average',
-  2: 'difficult',
-  1: 'tough',
-  0: 'none'
+  5: 'happy/calm',
+  4: 'energetic/excited',
+  3: 'angry/annoyed',
+  2: 'tired',
+  1: 'anxious',
+  0: 'sad/depressed'
 };
 
 app.get("/", function (req, res) {
