@@ -89,80 +89,9 @@
     }
   }
   
-  function setQuoteOfTheDay() {
-    $.ajax({
-      url : "https://quotes.rest/qod",
-      dataType: "json",
-      type: "GET",
-      success: function(data) {
-        var content = data["contents"]["quotes"][0];
-        var quote = content["quote"];
-        var author = content["author"];
-        $("#quoteOfTheDay").html("<p>\""+quote+"\"</p><p class='author'>—"+author+"</p>");
-      }
-    });
   }
   
-  function getMonthMoodAvgArr() {
-    var moods = $moodGrid.find('.item.month').map(function() {
-      return $(this).find("a")
-    });
-    var results = [];
-    moods.each(function() {
-      var result = $(this).map(function() {
-        var value = $(this).attr("data-mood");
-        if (value !== "0") {
-          return parseInt(value, 10);
-        }
-      }).get();
-      var sum = 0;
-      for (var i = 0; i < result.length; i++) {
-        if (result[i]) {
-          sum += result[i]
-        } else {
-          sum += 0;
-        }
-      }
-      if (sum != 0) {
-        var avg = sum/result.length;
-      } else {
-        var avg = 0;
-      }
-      results.push(avg);
-    });
-    return results;
-  }
   
-  function createAvgChart() {
-    var data = {
-      labels: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
-      series: [getMonthMoodAvgArr()]
-    };
-    var options = {
-      axisY: {
-        onlyInteger: true,
-        labelInterpolationFnc: function(value, index) {
-          return moodOptions[index];
-        },
-        stretch: true,
-        offset: 50
-      },
-      axisX: {
-        offset: 20
-      },
-      high: 6,
-      low: 0,
-      showArea: true,
-      showLine: true,
-      showPoint: false,
-      fullWidth: true,
-      chartPadding: {
-        top: 0,
-        right: 10
-      }
-    };
-    new Chartist.Line('.ct-chart', data, options);
-  }
 
   $moodItems.on("click", function(e) {
     e.preventDefault();
@@ -242,10 +171,6 @@
       updateMoodCalendar();
       createAvgChart();
       setActiveDayMoodRadio();
-    },
-    howAboutDialog: function() {
-      $("#aboutDialog").fadeIn('fast');
-    },
   }
   
   function execMenuItem(action) {
@@ -278,6 +203,4 @@
   loadMoodCalendar();
   selectTodayMood();
   createPixelsForHeader();
-  setQuoteOfTheDay();
-  createAvgChart();
 })();
